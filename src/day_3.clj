@@ -22,7 +22,8 @@
     (filter in? (all-points points))))
 
 (defn part-1 []
-  (let [
+  (let [input (->> (utils/get-str-input "input/3")
+                   (map (comp points str->patch)))
         combos (->> (utils/cartesian-product input input)
                     (remove #(>= (ffirst %) (first (second %)))))]
     (count
