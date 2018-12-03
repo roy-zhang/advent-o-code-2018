@@ -22,8 +22,7 @@
     (filter in? (all-points points))))
 
 (defn part-1 []
-  (let [input (->> (utils/get-str-input "input/3")
-                   (map (comp points str->patch)))
+  (let [
         combos (->> (utils/cartesian-product input input)
                     (remove #(>= (ffirst %) (first (second %)))))]
     (count
@@ -34,8 +33,10 @@
 (defn overlaps? [points-a points-b]
   (not (empty? (points-within points-a points-b))))
 
-(defn find-unique-patch [input]
-  (let [combos (->> (utils/cartesian-product input input)
+(defn part-2 [input]
+  (let [input (->> (utils/get-str-input "input/3")
+                   (map (comp points str->patch)))
+        combos (->> (utils/cartesian-product input input)
                     (remove #(>= (ffirst %) (first (second %)))))]
     (reduce (fn [unoverlapped [points-1 points-2]]
               (if (overlaps? points-1 points-2)
@@ -43,7 +44,3 @@
                 unoverlapped))
             (set input) combos)))
 
-(defn part-2 []
-  (->> (utils/get-str-input "input/3")
-       (map (comp points str->patch))
-       find-unique-patch))
