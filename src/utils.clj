@@ -1,6 +1,9 @@
 (ns utils)
 
+(defn get-str-input [filename]
+  (->> (slurp filename)
+       clojure.string/split-lines))
+
 (defn get-input [filename]
-    (->> (slurp filename)
-      clojure.string/split-lines
-      (map read-string)))
+  (map read-string (get-str-input filename)))
+
