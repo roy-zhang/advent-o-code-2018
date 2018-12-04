@@ -65,7 +65,7 @@
       (let [minute->times-asleep (reduce (fn [minute->times-asleep {:keys [date duration]}]
                                            (fill-in-accum minute->times-asleep (take duration (drop (.getMinute date) (range)))))
                                          {} asleep-actions)]
-        (apply max-key val minute->times-asleep)))))
+        (max-of minute->times-asleep)))))
 
 (defn part-1 []
   (let [input (actions "input/4b")
