@@ -68,7 +68,7 @@
         (max-of minute->times-asleep)))))
 
 (defn part-1 []
-  (let [input (actions "input/4b")
+  (let [input (actions "input/4")
         [guard minutes] (guard+most-minutes-asleep input)
         [minute days] (minute-most-asleep+days-asleep-on (actions-of-guard input guard))]
     (* guard minute)))
