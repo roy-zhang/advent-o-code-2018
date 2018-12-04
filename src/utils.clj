@@ -7,6 +7,11 @@
 (defn get-input [filename]
   (map read-string (get-str-input filename)))
 
+(defn accum [dict key number]
+  (if (contains? dict key)
+    (update dict key + number)
+    (assoc dict key number)))
+
 (defn cartesian-product
   "All the ways to take one item from each sequence"
   [& seqs]

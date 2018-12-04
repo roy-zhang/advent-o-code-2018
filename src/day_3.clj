@@ -33,7 +33,7 @@
 (defn overlaps? [points-ab]
   (not (empty? (points-within points-ab))))
 
-(defn part-2 [input]
+(defn part-2 []
   (let [input (->> (utils/get-str-input "input/3")
                    (map (comp points str->patch)))
         combos (->> (utils/cartesian-product input input)
