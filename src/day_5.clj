@@ -35,9 +35,9 @@
 
 (defn part-2 []
   (let [input    (first (utils/get-str-input "input/5"))
-        test-mes (map (fn [letter]
-                        (clojure.string/replace input
-                                                (re-pattern (str "[" letter (clojure.string/capitalize letter) "]")) ""))
-                      "r")
+        test-mes (pmap (fn [letter]
+                         (clojure.string/replace input
+                                                 (re-pattern (str "[" letter (clojure.string/capitalize letter) "]")) ""))
+                       "abcdefghijklmnopqrstuvwxyz")
         counts   (pmap collapse-and-count test-mes)]
-    (min counts)))
+    (apply min counts)))
