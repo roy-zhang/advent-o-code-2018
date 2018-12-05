@@ -1,5 +1,5 @@
 (ns day-4
-  (:require [utils :as utils]
+  (:require [utils]
             [java-time :as t]
             [clojure.string :as str]))
 
