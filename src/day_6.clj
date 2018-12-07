@@ -37,6 +37,9 @@
         without-outermost (apply dissoc voronoi (conj outermost nil))]
      (apply max (map count (vals without-outermost)))))
 
+(defn part-1 []
+  (largest-voronoi-count (get-input)))
+
 ;;3682 too high  [[252 74] 3682]
 ;;2917  [[140 211] 2917]
 
@@ -51,3 +54,6 @@
                                       (range small-y (inc big-y)))
         total-distances (map (partial total-distance input) grid)]
     (count (remove #(<= total-distance-cap %) total-distances))))
+
+(defn part-2 []
+  (central-cluster-count (get-input) 10000))
