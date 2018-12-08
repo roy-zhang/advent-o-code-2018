@@ -6,6 +6,7 @@
     (utils/get-str-input "input/6")
     (map #(mapv read-string (clojure.string/split % #",\s")))))
 
+;;note, it occurs to me this doesn't catch every outerbound point
 (defn bounds [input]
   (let [by-x (group-by first input)
         big-x (first (apply max-key first input))
